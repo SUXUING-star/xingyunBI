@@ -1,0 +1,55 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- 渐变定义 -->
+  <defs>
+    <!-- 主背景渐变 - 更亮的蓝色 -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2979ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#448aff;stop-opacity:1" />
+    </linearGradient>
+    <!-- 星云渐变 - 更亮的紫蓝色 -->
+    <linearGradient id="nebulaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b388ff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#82b1ff;stop-opacity:0.6" />
+    </linearGradient>
+    <!-- 发光效果增强 -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景圆 -->
+  <circle cx="50" cy="50" r="45" fill="url(#bgGradient)"/>
+
+  <!-- 数据可视化元素 - 抽象图表 -->
+  <path d="M30 70 L40 55 L50 65 L60 45 L70 60" 
+        stroke="#fff" 
+        stroke-width="2.5"
+        fill="none"
+        stroke-linecap="round"
+        filter="url(#glow)"/>
+
+  <!-- 星云云彩效果 - 调整位置到上半部分 -->
+  <path d="M25 35 C35 30, 45 40, 75 35 C85 33, 75 50, 65 45 C55 40, 45 50, 35 45 C25 40, 15 40, 25 35Z"
+        fill="url(#nebulaGradient)"
+        opacity="0.7"/>
+
+  <!-- 星星点缀 -->
+  <circle cx="30" cy="30" r="1" fill="white" filter="url(#glow)"/>
+  <circle cx="70" cy="40" r="1.2" fill="white" filter="url(#glow)"/>
+  <circle cx="45" cy="25" r="0.8" fill="white" filter="url(#glow)"/>
+  <circle cx="60" cy="30" r="1" fill="white" filter="url(#glow)"/>
+  <circle cx="75" cy="25" r="0.9" fill="white" filter="url(#glow)"/>
+
+  <!-- BI文字 - 调整到中心位置并增大 -->
+  <text x="50" y="58" 
+        text-anchor="middle" 
+        fill="white" 
+        font-family="Arial, sans-serif" 
+        font-weight="bold"
+        font-size="24"
+        filter="url(#glow)">BI</text>
+</svg>
