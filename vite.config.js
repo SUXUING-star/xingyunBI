@@ -12,6 +12,15 @@ export default defineConfig({
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx'] // 添加这行
   },
+	server: {
+    proxy: {
+      '/api': {
+        target: 'http://8.153.101.102:8080',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  },
   build: {
     rollupOptions: {
       output: {
