@@ -63,6 +63,11 @@ function Register() {
 				{
 					method: 'POST',
 					body: JSON.stringify(registerData),
+					headers: {
+						'Content-Type': 'application/json',
+						'Accept': 'application/json',
+					},
+					credentials: 'include',  // 添加这行
 				}
 			);
 
