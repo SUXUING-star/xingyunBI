@@ -1,23 +1,13 @@
 {
   "buildCommand": "vite build",
   "outputDirectory": "dist",
-	"headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "https://8.153.101.102:8443"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET,POST,PUT,DELETE,OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"
-        }
-      ]
+  "routes": [
+    { 
+      "handle": "filesystem"
+    },
+    { 
+      "src": "/(.*)", 
+      "dest": "/index.html" 
     }
   ]
 }
