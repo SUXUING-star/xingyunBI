@@ -17,36 +17,9 @@ function Register() {
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 
-	// 创建一个通用的 API 调用函数
-	const apiCall = async (url, options, retries = 3) => {
-		for (let i = 0; i < retries; i++) {
-			try {
-				const response = await fetch(url, {
-					...options,
-					headers: {
-						...options.headers,
-						'Content-Type': 'application/json',
-					},
-				});
-
-				const data = await response.json();
-				return { response, data };
-			} catch (error) {
-				if (i === retries - 1) throw error;
-				await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
-			}
-		}
-	};
-
-	// 在 Register.jsx 中修改 handleSubmit：
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError('');
-
-		if (password !== confirmPassword) {
-			setError('两次输入的密码不一致');
-			return;
-		}
 
 		const registerData = {
 			username: username.trim(),
@@ -58,25 +31,35 @@ function Register() {
 		setLoading(true);
 
 		try {
-			const { response, data } = await apiCall(
-				`${import.meta.env.VITE_API_URL}/api/auth/register`,
-				{
-					method: 'POST',
-					body: JSON.stringify(registerData),
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					credentials: 'omit', // 不发送凭证
+			// 添加重试逻辑
+			const fetchWithRetry = async (retries = 3) => {
+				for (let i = 0; i < retries; i++) {
+					try {
+						const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							mode: 'cors',
+							credentials: 'omit',
+							body: JSON.stringify(registerData),
+						});
+						return response;
+					} catch (error) {
+						if (i === retries - 1) throw error;
+						await new Promise(resolve => setTimeout(resolve, 1000));
+					}
 				}
-			);
+			};
 
-			console.log('Response:', data);
+			const response = await fetchWithRetry();
+			const data = await response.json();
 
-			if (response.ok) {
+			if (data.code === 0) {
 				alert('注册成功！请查收验证邮件。');
 				navigate('/login');
 			} else {
-				setError(data.error || '注册失败');
+				setError(data.msg || '注册失败');
 			}
 		} catch (err) {
 			console.error('Registration error:', err);
