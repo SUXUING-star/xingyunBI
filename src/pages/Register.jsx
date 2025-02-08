@@ -65,9 +65,8 @@ function Register() {
 					body: JSON.stringify(registerData),
 					headers: {
 						'Content-Type': 'application/json',
-						'Accept': 'application/json',
 					},
-					credentials: 'include',  // 添加这行
+					credentials: 'omit', // 不发送凭证
 				}
 			);
 
