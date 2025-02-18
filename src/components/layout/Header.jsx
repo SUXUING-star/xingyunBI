@@ -1,7 +1,7 @@
 // Header.jsx
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/AuthContext';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -29,7 +29,7 @@ import {
 	Menu,
 	Brain
 } from 'lucide-react';
-import ThemeToggle from '../ThemeToggle';
+import ThemeToggle from '../theme/ThemeToggle';
 import { github, githuburl, sitename, sitedescription, email } from '@/config/config'
 
 

@@ -9,12 +9,12 @@ import { Bell,
 	Brain
 } from 'lucide-react';
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
-import RecentActivities from '@/components/RecentActivities';
-import Reference from '@/components/Reference';
+import RecentActivities from '@/components/stats/RecentActivities';
+import Reference from '@/components/common/Reference';
 
 const RightSidebar = ({ showReference, onCloseReference }) => {
   const { token } = useAuth();

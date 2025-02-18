@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/auth/AuthContext';
 import { useToast } from '@/hooks/use-toast';
-import { ChartRenderer } from '../chart/ChartRenderer';
+import { ChartRenderer } from '../chart/render/ChartRenderer';
 import _ from 'lodash';
 
 export function DashboardChartPreview({ chartId }) {

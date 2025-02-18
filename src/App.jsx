@@ -2,35 +2,35 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
-import { AuthProvider } from '@/contexts/AuthContext';
-import ProtectedRoute from '@/components/ProtectedRoute';
-import { PublicRoute } from '@/components/PublicRoute';
+import { AuthProvider } from '@/contexts/auth/AuthContext';
+import ProtectedRoute from '@/components/routes/ProtectedRoute';
+import { PublicRoute } from '@/components/routes/PublicRoute';
 import Layout from '@/components/layout/Layout';
 
 // 页面组件
-import Home from '@/pages/Home';
-import Login from '@/pages/Login';
-import Register from '@/pages/Register';
-import ForgotPassword from '@/pages/ForgotPassword';
-import ResetPassword from '@/pages/ResetPassword';
-import VerifyEmail from '@/pages/VerifyEmail';
-import UserProfile from '@/pages/UserProfile';
-import About from '@/pages/About';
-import { NotFound } from '@/pages/NotFound';
+import Home from '@/pages/common/Home';
+import Login from '@/pages/auth/Login';
+import Register from '@/pages/auth/Register';
+import ForgotPassword from '@/pages/auth/ForgotPassword';
+import ResetPassword from '@/pages/auth/ResetPassword';
+import VerifyEmail from '@/pages/auth/VerifyEmail';
+import UserProfile from '@/pages/profile/UserProfile';
+import About from '@/pages/common/About';
+import { NotFound } from '@/pages/common/NotFound';
 
 // 仪表盘相关组件
-import DashboardList from '@/pages/DashboardList';
-import { DashboardDetail } from '@/pages/DashboardDetail';
-import DashboardEditor from '@/pages/DashboardEditor';
-import ChartEditor from '@/pages/ChartEditor';
+import DashboardList from '@/pages/dashboard/DashboardList';
+import { DashboardDetail } from '@/pages/dashboard/DashboardDetail';
+import DashboardEditor from '@/pages/dashboard/DashboardEditor';
+import ChartEditor from '@/pages/chart/ChartEditor';
 
 // 数据源相关
-import DataSourceList from '@/pages/DataSourceList';
+import DataSourceList from '@/pages/datasource/DataSourceList';
 
 // 机器学习模型相关
-import MLModelList from '@/pages/MLModelList';
-import MLModelEditor from '@/pages/MLModelEditor';
-import MLModelDetail from '@/pages/MLModelDetail';
+import MLModelList from '@/pages/mlmodel/MLModelList';
+import MLModelEditor from '@/pages/mlmodel/MLModelEditor';
+import MLModelDetail from '@/pages/mlmodel/MLModelDetail';
 
 function App() {
 	return (

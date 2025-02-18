@@ -1,9 +1,9 @@
 // src/components/mlmodel/MLModelResult.jsx
 import React from 'react';
-import { RegressionResult } from './RegressionResult';
-import { CorrelationResult } from './CorrelationResult';
-import { DecisionTreeResult } from './DecisionTreeResult';
-import { KMeansResult } from './KMeansResult';
+import { RegressionResult } from './linearregression/RegressionResult';
+import { CorrelationResult } from './correlation/CorrelationResult';
+import { DecisionTreeResult } from './decision/DecisionTreeResult';
+import { KMeansResult } from './kmeans/KMeansResult';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
 export function MLModelResult({ result, modelType, features, target }) {
