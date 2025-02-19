@@ -22,14 +22,20 @@ function Release() {
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
-		// 移除对 isFirstLoad 的依赖
-		if (!isLoading) {
-			const timer = setTimeout(() => {
-				setShouldAnimate(true);
-			}, 100);
-			return () => clearTimeout(timer);
-		}
-	}, [isLoading]);
+    if (!isLoading) {
+      // 简化动画控制逻辑
+      setShouldAnimate(true);
+    }
+  }, [isLoading]);
+
+  // 在加载状态时显示一个简单的加载指示器
+  if (isLoading || !shouldAnimate) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
   const platforms = [
     {
       icon: <Globe className="h-8 w-8 text-blue-500" />,
@@ -83,9 +89,6 @@ function Release() {
       ]
     }
   ];
-	if (!shouldAnimate) {
-    return null; // 在动画开始前不渲染任何内容
-  }
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">

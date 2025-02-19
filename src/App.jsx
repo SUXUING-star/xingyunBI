@@ -35,34 +35,33 @@ import MLModelEditor from '@/pages/mlmodel/MLModelEditor';
 import MLModelDetail from '@/pages/mlmodel/MLModelDetail';
 
 function App() {
-  return (
-    <AuthProvider>
-      <Routes>
-        {/* 公开路由 - 未登录时才能访问 */}
-        <Route path="/login" element={
-          <PublicRoute><Login /></PublicRoute>
-        } />
-        <Route path="/register" element={
-          <PublicRoute><Register /></PublicRoute>
-        } />
-        <Route path="/forgot-password" element={
-          <PublicRoute><ForgotPassword /></PublicRoute>
-        } />
-        <Route path="/reset-password" element={
-          <PublicRoute><ResetPassword /></PublicRoute>
-        } />
-        <Route path="/verify-email" element={
-          <PublicRoute><VerifyEmail /></PublicRoute>
-        } />
+	return (
+		<AuthProvider>
+			<LoadingProvider>
+				<Routes>
+					{/* 公开路由 - 未登录时才能访问 */}
+					<Route path="/login" element={
+						<PublicRoute><Login /></PublicRoute>
+					} />
+					<Route path="/register" element={
+						<PublicRoute><Register /></PublicRoute>
+					} />
+					<Route path="/forgot-password" element={
+						<PublicRoute><ForgotPassword /></PublicRoute>
+					} />
+					<Route path="/reset-password" element={
+						<PublicRoute><ResetPassword /></PublicRoute>
+					} />
+					<Route path="/verify-email" element={
+						<PublicRoute><VerifyEmail /></PublicRoute>
+					} />
 
-        {/* 使用 Layout 的路由 */}
-        <Route path="/" element={<Layout />}>
-          {/* 主页 - 不需要登录也能访问 */}
-          <Route index element={<Home />} />
-          
-          {/* 公开页面 */}
-          <Route path="about" element={<About />} />
-          <Route path="release" element={<Release />} />
+					{/* 使用 Layout 的路由 */}
+					<Route path="/" element={<Layout />}>
+						{/* 主页和公共页面 - 不需要登录验证 */}
+						<Route index element={<Home />} />
+						<Route path="about" element={<About />} />
+						<Route path="release" element={<Release />} />
 
 						{/* 需要登录才能访问的路由 */}
 
@@ -99,7 +98,7 @@ function App() {
 						<Route path="*" element={<NotFound />} />
 					</Route>
 				</Routes>
-
+			</LoadingProvider>
 			<Toaster />
 		</AuthProvider>
 	);
