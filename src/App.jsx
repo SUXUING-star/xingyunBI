@@ -16,6 +16,7 @@ import ResetPassword from '@/pages/auth/ResetPassword';
 import VerifyEmail from '@/pages/auth/VerifyEmail';
 import UserProfile from '@/pages/profile/UserProfile';
 import About from '@/pages/common/About';
+import Release from './pages/common/Release';
 import { NotFound } from '@/pages/common/NotFound';
 
 // 仪表盘相关组件
@@ -52,15 +53,20 @@ function App() {
 				<Route path="/verify-email" element={
 					<PublicRoute><VerifyEmail /></PublicRoute>
 				} />
-
 				{/* 使用 Layout 的路由 */}
 				<Route path="/" element={<Layout />}>
+					<Route path="/about"
+						element={<PublicRoute><About /></PublicRoute>} />
+					<Route path="/release"
+						element={<PublicRoute><Release /></PublicRoute>} />
+
+
+
 					{/* 主页 - 不需要登录也能访问 */}
 					<Route index element={<Home />} />
 
 					{/* 需要登录才能访问的路由 */}
-					<Route path="/about"
-						element={<ProtectedRoute><About /></ProtectedRoute>} />
+
 
 					<Route path="/dashboards"
 						element={<ProtectedRoute><DashboardList /></ProtectedRoute>} />

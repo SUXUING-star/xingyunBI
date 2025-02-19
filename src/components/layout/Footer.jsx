@@ -34,9 +34,9 @@ function Footer() {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 					{/* Logo和描述 */}
-					
+
 					<div className="md:col-span-1">
-					<img
+						<img
 							src="/site-logo.svg"
 							alt={sitename}
 							className="w-16 h-16"
@@ -45,14 +45,23 @@ function Footer() {
 						<p className="text-sm text-gray-500 dark:text-gray-400">
 							让数据可视化变得简单而强大
 						</p>
-						
+
 
 					</div>
 
 					{/* 快速链接 */}
 					<div className="md:col-span-1">
-						<h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">快速链接</h3>
+						<h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-5">快速链接</h3>
 						<ul className="space-y-2">
+							<li>
+								<button
+									onClick={() => navigate('/release')}
+									className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white"
+								>
+									跨平台应用
+								</button>
+
+							</li>
 							<li>
 								<button
 									onClick={() => navigate('/about')}
@@ -60,6 +69,7 @@ function Footer() {
 								>
 									关于我们
 								</button>
+
 							</li>
 							<li>
 								<button
