@@ -22,13 +22,14 @@ function Release() {
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
-    if (!isLoading && !isFirstLoad) {
-      const timer = setTimeout(() => {
-        setShouldAnimate(true);
-      }, 100); // 给 LoadingScreen 一点时间完全消失
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading, isFirstLoad]);
+		// 移除对 isFirstLoad 的依赖
+		if (!isLoading) {
+			const timer = setTimeout(() => {
+				setShouldAnimate(true);
+			}, 100);
+			return () => clearTimeout(timer);
+		}
+	}, [isLoading]);
   const platforms = [
     {
       icon: <Globe className="h-8 w-8 text-blue-500" />,

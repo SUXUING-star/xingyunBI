@@ -24,16 +24,15 @@ export const LoadingProvider = ({ children }) => {
     }
   }, [location.pathname, isFirstLoad]);
 
-  // 初始加载
-  useEffect(() => {
-    if (isFirstLoad) {
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-        setIsFirstLoad(false);
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [isFirstLoad]);
+	useEffect(() => {
+		if (isFirstLoad) {
+			const timer = setTimeout(() => {
+				setIsLoading(false);
+				setIsFirstLoad(false);
+			}, 1000); // 从 2000 减少到 1000
+			return () => clearTimeout(timer);
+		}
+	}, [isFirstLoad]);
 
   return (
     <LoadingContext.Provider value={{ isLoading, isFirstLoad, setIsLoading }}>
