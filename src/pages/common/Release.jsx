@@ -107,7 +107,7 @@ function Release() {
         </ScaleIn>
         <div className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           <TypeWriter 
-            text="选择适合您的版本，开启数据可视化之旅" 
+            text="开启你的数据可视化之旅" 
             duration={3000}
             delay={600}
             hideCursor={true}
